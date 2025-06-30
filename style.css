@@ -1,0 +1,167 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px;
+    background-color: white;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .logo img {
+    height: 40px;
+  }
+  
+  .nav {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+  
+  .dropdown {
+    position: relative;
+  }
+  
+  .dropbtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 150px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    padding: 12px 16px;
+    display: block;
+    text-decoration: none;
+    color: black;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  .auth-buttons button {
+    margin-left: 10px;
+    padding: 6px 14px;
+    border: 1px solid #0070ba;
+    border-radius: 20px;
+    background-color: white;
+    color: #0070ba;
+    cursor: pointer;
+  }
+  
+  .auth-buttons .signup {
+    background-color: #0070ba;
+    color: white;
+  }
+  
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+  }
+  
+  .modal-content {
+    background-color: white;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+  }
+  
+  .close {
+    float: right;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  form input {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+  }
+  
+  form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #0070ba;
+    color: white;
+    border: none;
+    border-radius: 5px;
+  }
+  body {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: medium;
+  text-align: center;
+  background: #fff;
+  margin: 0;
+  padding: 2em;
+}
+
+.header {
+  font-size: 1.6em;
+  margin-bottom: 30px;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 60px;
+}
+
+.card {
+  border: 0px solid #ddd;
+  border-radius: 10px;
+  width: 300px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.card img {
+  width: 100%;
+  border-radius: 8px;
+  height: 50%;
+}
+
+.link-btn {
+  margin-top: 10px;
+  padding: 10px 15px;
+  border: none;
+  color: #6a5e5e;
+  background: #0000ff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.link-btn.green {
+  background: #4CAF50;
+}
+.link-btn.red {
+  background: #d32f2f;
+}
+.link-btn.black {
+  background: #212121;
+}
+.link-btn.blue {
+  background: #007BFF;
+}

@@ -1,0 +1,224 @@
+<!-- Add this white footer section to your existing code -->
+<div class="paxinfinitypay-footer">
+  <div class="footer-content">
+    <h2 class="footer-text" style="font-size: 36px; color: #333; margin-bottom: 30px;">Sign up and get started.</h2>
+    <button class="get-started-btn" onclick="showAuthOptions()">Get Started</button>
+    
+    <div class="footer-links">
+      <div class="link-column">
+        <a href="#">Help</a>
+        <a href="#">Contact</a>
+        <a href="#">Fees</a>
+        <a href="#">Security</a>
+        <a href="#">Features</a>
+        <a href="#">Shop</a>
+      </div>
+      <div class="link-column">
+        <a href="#">About</a>
+        <a href="#">Newsroom</a>
+        <a href="#">Jobs</a>
+        <a href="#">Developers</a>
+        <a href="#">Partners</a>
+      </div>
+    </div>
+    
+    <div class="copyright">
+      <p>© 1999–2023</p>
+      <a href="#">Accessibility</a>
+      <a href="#">Cookies</a>
+      <a href="#">Privacy</a>
+      <a href="#">Legal</a>
+    </div>
+  </div>
+</div>
+
+<div id="authOptionsModal" class="auth-modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeAuthModal()">&times;</span>
+    <h3>Get Started with Paxinfinitypay</h3>
+    <div class="auth-buttons">
+      <button class="auth-btn signup-btn" onclick="showSignupForm()">Sign Up</button>
+      <button class="auth-btn login-btn" onclick="showLoginForm()">Log In</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Styles for the white footer section only */
+  .paxinfinitypay-footer {
+    background-color: white;
+    color: #333;
+    padding: 40px 20px;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .footer-text {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  .get-started-btn {
+    background-color: #0070ba;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 40px;
+    transition: background-color 0.3s;
+  }
+  
+  .get-started-btn:hover {
+    background-color: #005a9e;
+  }
+  
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+  }
+  
+  .link-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .link-column a {
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  
+  .link-column a:hover {
+    text-decoration: underline;
+  }
+  
+  .copyright {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .copyright a {
+    color: #666;
+    text-decoration: none;
+  }
+  
+  .copyright a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Auth modal styles */
+  .auth-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+  }
+  
+  .close-btn {
+    float: right;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .auth-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 30px;
+  }
+  
+  .auth-btn {
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .signup-btn {
+    background-color: #0070ba;
+    color: white;
+  }
+  
+  .login-btn {
+    background-color: #f0f0f0;
+    color: #333;
+  }
+  
+  .signup-btn:hover {
+    background-color: #005a9e;
+  }
+  
+  .login-btn:hover {
+    background-color: #e0e0e0;
+  }
+  
+  @media (max-width: 600px) {
+    .footer-links {
+      gap: 30px;
+    }
+    
+    .copyright {
+      gap: 10px;
+    }
+  }
+</style>
+
+<script>
+  // Function to show auth options modal
+  function showAuthOptions() {
+    document.getElementById('authOptionsModal').style.display = 'flex';
+  }
+  
+  // Function to close auth modal
+  function closeAuthModal() {
+    document.getElementById('authOptionsModal').style.display = 'none';
+  }
+  
+  // These functions would connect to your existing auth system
+  function showSignupForm() {
+    closeAuthModal();
+    // Connect to your existing signup functionality
+    alert("Redirecting to sign up form...");
+    // In your actual code, you would call your signup function here
+  }
+  
+  function showLoginForm() {
+    closeAuthModal();
+    // Connect to your existing login functionality
+    alert("Redirecting to login form...");
+    // In your actual code, you would call your login function here
+  }
+</script>

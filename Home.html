@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>FASTPAY</title>
+        <link rel="stylesheet" href="style.css" />
+        <style>
+            /* All your existing styles remain here */
+            body {
+                margin: 0;
+                font-family: 'Segoe UI', sans-serif;
+                background-color: #656b70;
+                color: white;
+                text-align: center;
+                padding: 40px 20px;
+            }
+
+            .container {
+                max-width: 800px;
+                margin: auto;
+            }
+
+            h1 {
+                font-size: 36px;
+                font-weight: bold;
+                margin-bottom: 10px;
+                line-height: 1.4;
+            }
+
+            p.subtext {
+                font-size: 16px;
+                margin-bottom: 40px;
+                color: #ddd;
+            }
+
+            .action {
+                margin-bottom: 30px;
+            }
+
+            .action p {
+                margin-bottom: 10px;
+                font-size: 16px;
+            }
+
+            .btn {
+                padding: 14px 28px;
+                font-size: 15px;
+                border: none;
+                border-radius: 25px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                width: 220px;
+            }
+
+            .btn-track {
+                background-color: #e5d4af;
+                color: #333;
+            }
+
+            .btn-accept {
+                background-color: #0070ba;
+                color: white;
+            }
+
+            .btn-cancel {
+                background-color: #d10065;
+                color: white;
+            }
+
+            .btn:hover {
+                opacity: 0.9;
+            }
+
+            /* New auth page styles */
+            .auth-page {
+                display: none;
+                max-width: 500px;
+                margin: 0 auto;
+                padding: 30px;
+                background-color: white;
+                border-radius: 10px;
+                color: #333;
+                box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            }
+
+            .auth-page h2 {
+                color: #0070ba;
+                margin-bottom: 20px;
+            }
+
+            .auth-page input {
+                width: 100%;
+                padding: 12px;
+                margin: 10px 0;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                font-size: 16px;
+            }
+
+            .auth-page button {
+                background-color: #0070ba;
+                color: white;
+                border: none;
+                padding: 12px 20px;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 16px;
+                margin-top: 10px;
+                width: 100%;
+            }
+
+            .auth-page button:hover {
+                background-color: #005a9e;
+            }
+
+            .switch-auth {
+                margin-top: 20px;
+                color: #666;
+            }
+
+            .switch-auth a {
+                color: #0070ba;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+            .switch-auth a:hover {
+                text-decoration: underline;
+            }
+
+            /* Other existing styles... */
+        </style>
+      </head>
+      <body>
+      
+        <!-- HEADER -->
+        <header class="header">
+          <div class="logo">
+            <img src="local.jpg" alt="Logo" />
+          </div>
+          <nav class="nav">
+            <div class="dropdown">
+              <button class="dropbtn">PERSONAL</button>
+              <div class="dropdown-content">
+                <a href="#">Wallet</a>
+                <a href="#">Send Money</a>
+              </div>
+            </div>
+            <div class="dropdown">
+              <button class="dropbtn">BUSINESS</button>
+              <div class="dropdown-content">
+                <a href="#">API Access</a>
+                <a href="#">Invoices</a>
+              </div>
+            </div>
+          </nav>
+          <div class="auth-buttons">
+            <button onclick="showLoginPage()">Log In</button>
+            <button class="signup" onclick="showSignupPage()">Sign Up</button>
+          </div>
+        </header>
+
+        <!-- Auth Pages -->
+        <div id="loginPage" class="auth-page">
+            <h2>Login to Your Account</h2>
+            <form id="loginForm">
+                <input type="email" id="loginEmail" placeholder="Email" required>
+                <input type="password" id="loginPassword" placeholder="Password" required>
+                <button type="submit">Log In</button>
+            </form>
+            <div class="switch-auth">
+                Don't have an account? <a onclick="showSignupPage()">Sign up</a>
+            </div>
+        </div>
+
+        <div id="signupPage" class="auth-page">
+            <h2>Create New Account</h2>
+            <form id="signupForm">
+                <input type="text" id="signupUsername" placeholder="Username" required>
+                <input type="email" id="signupEmail" placeholder="Email" required>
+                <input type="tel" id="signupPhone" placeholder="Phone Number" required>
+                <input type="password" id="signupPassword" placeholder="Password" required>
+                <button type="submit">Sign Up</button>
+            </form>
+            <div class="switch-auth">
+                Already have an account? <a onclick="showLoginPage()">Log in</a>
+            </div>
+        </div>
+
+        <!-- Main Content (hidden when auth pages are shown) -->
+        <div id="mainContent">
+          <div class="container">
+            <h1>
+              MOVE YOUR MONEY<br>
+              AROUND THE WORLD<br>
+              WITH MOBILE WALLET<br>
+              USING FASTPAY
+            </h1>
+            <p class="subtext">
+              Just link your M-WALLET and Fastpay accounts and enjoy a world of possibilities.
+            </p>
+
+            <div class="action">
+              <p>Track The Payment Transfer To Check The Status Of Your Payment.</p>
+              <button class="btn btn-track" onclick="trackPayment()">Track Payment</button>
+            </div>
+
+            <div class="action">
+              <p>Accept The Payment To Receive The Funds Instantly.</p>
+              <button class="btn btn-accept" onclick="acceptPayment()">Accept Payment</button>
+            </div>
+
+            <div class="action">
+              <p>Cancel The Payment To Decline The Funds, And The Sender Will Be Refunded Immediately.</p>
+              <button class="btn btn-cancel" onclick="cancelTransfer()">Cancel The Transfer</button>
+            </div>
+          </div>
+
+          <h2 class="header">Fastpay is for everyone who uses different cryptocurrency platforms.</h2>
+          <div class="card-container">
+            <!-- Card Template -->
+            <div class="card">
+              <img src="paxful.jpg" alt="Paxful" />
+              <p><strong>Paxful</strong></p>
+              <p>Find out why we have more than 1M active accounts linked with Fastpay.</p>
+              <button class="link-btn" onclick="openPrompt('paxful')">Link Account</button>
+            </div>
+
+            <div class="card">
+              <img src="noones.jpg" alt="Noones" />
+              <p><strong>Noones</strong></p>
+              <p>Find out why we have more than 1M active accounts linked with Fastpay.</p>
+              <button class="link-btn green" onclick="openPrompt('noones')">Link Account</button>
+            </div>
+
+            <div class="card">
+              <img src="bybit.jpg" alt="Bybit" />
+              <p><strong>Bybit</strong></p>
+              <p>Find out why we have more than 100K accounts linked with Fastpay.</p>
+              <button class="link-btn black" onclick="openPrompt('bybit')">Link Account</button>
+            </div>
+
+            <div class="card">
+              <img src="local.jpg" alt="LocalCoinSwap" />
+              <p><strong>LocalCoinSwap</strong></p>
+              <p>Find out why we have more than 1M active accounts linked with Fastpay.</p>
+              <button class="link-btn blue" onclick="openPrompt('localcoinswap')">Link Account</button>
+            </div>
+
+            <div class="card">
+              <img src="deriv.jpg" alt="Deriv" />
+              <p><strong>Deriv</strong></p>
+              <p>Find out why we have more than 1M active accounts linked with Fastpay.</p>
+              <button class="link-btn red" onclick="openPrompt('deriv')">Link Account</button>
+            </div>
+
+            <div class="card">
+              <img src="coinbase.jpg" alt="Coinbase" />
+              <p><strong>Coinbase</strong></p>
+              <p>Find out why we have more than 1M active accounts linked with Fastpay.</p>
+              <button class="link-btn blue" onclick="openPrompt('coinbase')">Link Account</button>
+            </div>
+          </div>
+
+          <!-- Your other sections... -->
+        </div>
+
+        <script>
+            // User data storage (simulating a database)
+            let users = JSON.parse(localStorage.getItem('fastpayUsers')) || [];
+            let currentUser = null;
+
+            // Auth functions
+            function showLoginPage() {
+                document.getElementById('mainContent').style.display = 'none';
+                document.getElementById('signupPage').style.display = 'none';
+                document.getElementById('loginPage').style.display = 'block';
+            }
+
+            function showSignupPage() {
+                document.getElementById('mainContent').style.display = 'none';
+                document.getElementById('loginPage').style.display = 'none';
+                document.getElementById('signupPage').style.display = 'block';
+            }
+
+            function showMainContent() {
+                document.getElementById('loginPage').style.display = 'none';
+                document.getElementById('signupPage').style.display = 'none';
+                document.getElementById('mainContent').style.display = 'block';
+            }
+
+            // Form submissions
+            document.getElementById('loginForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = document.getElementById('loginEmail').value;
+                const password = document.getElementById('loginPassword').value;
+                
+                const user = users.find(u => u.email === email && u.password === password);
+                
+                if (user) {
+                    currentUser = user;
+                    alert('Login successful! Welcome back ' + user.username);
+                    showMainContent();
+                } else {
+                    alert('Invalid email or password');
+                }
+            });
+
+            document.getElementById('signupForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const username = document.getElementById('signupUsername').value;
+                const email = document.getElementById('signupEmail').value;
+                const phone = document.getElementById('signupPhone').value;
+                const password = document.getElementById('signupPassword').value;
+                
+                if (users.some(u => u.email === email)) {
+                    alert('Email already registered');
+                    return;
+                }
+                
+                const newUser = { username, email, phone, password };
+                users.push(newUser);
+                localStorage.setItem('fastpayUsers', JSON.stringify(users));
+                
+                alert('Account created successfully! You can now login.');
+                showLoginPage();
+            });
+
+            // Your existing functions
+            function trackPayment() {
+                const paymentId = prompt("🔎 Enter your Payment Tracking ID:");
+                if (paymentId) {
+                    alert(`✅ Tracking ID: ${paymentId}\n\nStatus: Your payment is in process.`);
+                } else {
+                    alert("❗ You must enter a valid Tracking ID.");
+                }
+            }
+
+            function acceptPayment() {
+                alert("⚠️ You are about to accept the payment.\n\nEnsure the details are correct before proceeding.");
+            }
+
+            function cancelTransfer() {
+                alert("⚠️ You are about to cancel this transfer.\n\nThe sender will be refunded immediately.\nThis action is irreversible.");
+            }
+
+            function openPrompt(platform) {
+                const username = prompt(`Enter your ${platform.toUpperCase()} username/email to link account:`);
+                if (username) {
+                    alert(`${platform.toUpperCase()} account linked successfully!`);
+                }
+            }
+
+            // Initialize - show main content by default
+            showMainContent();
+        </script>
+
+
+
+
+
+
+
+<script>
+    function openPrompt(platform) {
+      const username = prompt(`Enter your ${platform.toUpperCase()} username/email to link account:`);
+      if (username) {
+        fetch("http://localhost:3000/api/link-account", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ platform, username })
+        })
+        .then(res => res.json())
+        .then(data => alert(data.message))
+        .catch(err => alert("Error linking account."));
+      }
+    }
+  </script>
+</body>
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FastPay - Payment Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #17383d7d;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 0;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            color: #003087;
+            margin-bottom: 20px;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 40px;
+        }
+        
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            width: calc(33.333% - 20px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: #003087;
+            margin-bottom: 20px;
+        }
+        
+        h2 {
+            font-size: 1.5rem;
+            color: #003087;
+            margin-bottom: 15px;
+        }
+        
+        .feature-description {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .learn-more {
+            display: inline-block;
+            color: #0070ba;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .learn-more:hover {
+            color: #003087;
+            text-decoration: underline;
+        }
+        
+        .divider {
+            border: none;
+            height: 1px;
+            background-color: #ddd;
+            margin: 40px 0;
+        }
+        
+        .withdrawal-options {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .withdrawal-options h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .options {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+        
+        .option {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .option-icon {
+            font-size: 1.8rem;
+            color: #003087;
+        }
+        
+        .option-text {
+            font-weight: 600;
+            color: #333;
+        }
+        
+        @media (max-width: 768px) {
+            .feature-card {
+                width: 100%;
+            }
+            
+            .options {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>FastPay is for everyone who pays or gets paid.</h1>
+            <p class="tagline">Join millions of users and businesses worldwide</p>
+        </header>
+        
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h2>Individuals</h2>
+                <p class="feature-description">
+                    Discover why we have more than 5 million active accounts worldwide. Send and receive money with ease.
+                </p>
+                <a href="#" class="learn-more">Learn More <i class="fas fa-chevron-right"></i></a>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <h2>Businesses</h2>
+                <p class="feature-description">
+                    Join over 2 million businesses around the world offering FastPay as a payment solution.
+                </p>
+                <a href="#" class="learn-more">Learn More <i class="fas fa-chevron-right"></i></a>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <h2>Partners & Developers</h2>
+                <p class="feature-description">
+                    Work with FastPay to offer your customers world-class payment solutions through our API.
+                </p>
+                <a href="#" class="learn-more">Learn More <i class="fas fa-chevron-right"></i></a>
+            </div>
+        </div>
+        
+        <hr class="divider">
+        
+        <div class="withdrawal-options">
+            <h2>Flexible Withdrawal Options</h2>
+            <div class="options">
+                <div class="option">
+                    <div class="option-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <span class="option-text">Withdraw money directly to Bank Account</span>
+                </div>
+                
+                <div class="option">
+                    <div class="option-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <span class="option-text">Withdraw money from FastPay to Mobile Wallet</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+<!-- Add this right after your last card-container div -->
+<div class="dual-color-section">
+  <div class="orange-section">
+    <h3>Withdraw money directly to Bank Account</h3>
+    <p>You can now withdraw your Fastpay balance to your Bank account seamlessly by acceessing Bank Online and Mobile Apps. What`s more, this option is exclusive to Banks customers and funds will be withdrawn within 24 hours.</p>
+    <h4>Learn more here</h4>
+  </div>
+  <div class="purple-section">
+    <h3>Withdraw money from Fastpay to M-WALLET</h3>
+    <p>You can easily withdraw your money to your M-WALLET account, and use it whenever, whenever you like.</p>
+    <h4>Link your Fastpay and M-Wallet accounts</h4>
+  </div>
+</div>
+
+<style>
+  /* Styles for the new dual color section only */
+  .dual-color-section {
+    display: flex;
+    width: 100%;
+    min-height: 300px;
+    margin: 50px 0;
+  }
+  
+  .orange-section {
+    flex: 1;
+    background-color: #FFA500;
+    padding: 40px;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+  }
+  
+  .purple-section {
+    flex: 1;
+    background-color: #800080;
+    padding: 40px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  
+  .orange-section h3, 
+  .purple-section h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .orange-section p, 
+  .purple-section p {
+    max-width: 80%;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  
+  @media (max-width: 768px) {
+    .dual-color-section {
+      flex-direction: column;
+    }
+    
+    .orange-section, 
+    .purple-section {
+      text-align: center;
+      align-items: center;
+    }
+    
+    .orange-section p, 
+    .purple-section p {
+      max-width: 100%;
+    }
+  }
+</style>
+
+<script>
+  // Fix for login/signup buttons (add this to your existing script)
+  function openModal(modalId) {
+    if (modalId === 'loginModal') {
+      const username = prompt("Enter your username:");
+      if (username) {
+        const password = prompt("Enter your password:");
+        if (password) {
+          alert(`Welcome back, ${username}! You are now logged in.`);
+        }
+      }
+    } else if (modalId === 'signupModal') {
+      const username = prompt("Choose a username:");
+      if (username) {
+        const email = prompt("Enter your email:");
+        if (email) {
+          const phone = prompt("Enter your phone number:");
+          if (phone) {
+            const password = prompt("Choose a password:");
+            if (password) {
+              alert(`Account created successfully!\nUsername: ${username}\nEmail: ${email}\nPhone: ${phone}`);
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  // Close modal function (needed for your existing modal structure)
+  function closeModal(modalId) {
+    // This is kept in case you want to use modals later
+  }
+</script>
+
+
+
+<section style="background: linear-gradient(to right, #0070ba, #003087); padding: 50px 20px; color: white; text-align: center;">
+    <h2 style="color: #ff3366; font-size: 32px; margin-bottom: 30px;">
+        Join 5M active Fastpay accounts worldwide.
+    </h2>
+    <div style="display: flex; justify-content: space-around; flex-wrap: wrap; max-width: 1200px; margin: 0 auto; text-align: left;">
+        <div style="flex: 1 1 300px; padding: 20px;">
+            <h3>Safer and protected</h3>
+            <p>
+                Shop with peace of mind. We don’t share your full financial information with sellers.
+                And Fastpay Buyer Protection covers your eligible purchases if they don’t show
+                up or match their description.
+            </p>
+        </div>
+        <div style="flex: 1 1 300px; padding: 20px;">
+            <h3>Across devices, worldwide</h3>
+            <p>
+                With just one account, you can shop at millions of merchants around the world, and
+                send money to friends and family almost anywhere. Use any of your devices to manage
+                your account on the go with the Fastpay app.
+            </p>
+        </div>
+        <div style="flex: 1 1 300px; padding: 20px;">
+            <h3>Mostly free, always upfront</h3>
+            <p>
+                It’s free to open a Fastpay account and buy something using Fastpay
+                unless it involves a currency conversion. There are no Fastpay fees if you use
+                your Fastpay balance to send money in your own currency to friends and family.
+            </p>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+<!-- Add this white footer section to your existing code -->
+<div class="paxinfinitypay-footer">
+  <div class="footer-content">
+    <h2 class="footer-text" style="font-size: 36px; color: #333; margin-bottom: 30px;">Sign up and get started.</h2>
+    <button class="get-started-btn" onclick="showAuthOptions()">Get Started</button>
+    
+    <div class="footer-links">
+      <div class="link-column">
+        <a href="#">Help</a>
+        <a href="#">Contact</a>
+        <a href="#">Fees</a>
+        <a href="#">Security</a>
+        <a href="#">Features</a>
+        <a href="#">Shop</a>
+      </div>
+      <div class="link-column">
+        <a href="#">About</a>
+        <a href="#">Newsroom</a>
+        <a href="#">Jobs</a>
+        <a href="#">Developers</a>
+        <a href="#">Partners</a>
+      </div>
+    </div>
+    
+    <div class="copyright">
+      <p>© 1999–2023</p>
+      <a href="#">Accessibility</a>
+      <a href="#">Cookies</a>
+      <a href="#">Privacy</a>
+      <a href="#">Legal</a>
+    </div>
+  </div>
+</div>
+
+<div id="authOptionsModal" class="auth-modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeAuthModal()">&times;</span>
+    <h3>Get Started with Fastpay</h3>
+    <div class="auth-buttons">
+      <button class="auth-btn signup-btn" onclick="showSignupForm()">Sign Up</button>
+      <button class="auth-btn login-btn" onclick="showLoginForm()">Log In</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Styles for the white footer section only */
+  .paxinfinitypay-footer {
+    background-color: white;
+    color: #333;
+    padding: 40px 20px;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .footer-text {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  .get-started-btn {
+    background-color: #0070ba;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 40px;
+    transition: background-color 0.3s;
+  }
+  
+  .get-started-btn:hover {
+    background-color: #005a9e;
+  }
+  
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+  }
+  
+  .link-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .link-column a {
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  
+  .link-column a:hover {
+    text-decoration: underline;
+  }
+  
+  .copyright {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .copyright a {
+    color: #666;
+    text-decoration: none;
+  }
+  
+  .copyright a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Auth modal styles */
+  .auth-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+  }
+  
+  .close-btn {
+    float: right;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .auth-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 30px;
+  }
+  
+  .auth-btn {
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .signup-btn {
+    background-color: #0070ba;
+    color: white;
+  }
+  
+  .login-btn {
+    background-color: #f0f0f0;
+    color: #333;
+  }
+  
+  .signup-btn:hover {
+    background-color: #005a9e;
+  }
+  
+  .login-btn:hover {
+    background-color: #e0e0e0;
+  }
+  
+  @media (max-width: 600px) {
+    .footer-links {
+      gap: 30px;
+    }
+    
+    .copyright {
+      gap: 10px;
+    }
+  }
+</style>
+
+<script>
+  // Function to show auth options modal
+  function showAuthOptions() {
+    document.getElementById('authOptionsModal').style.display = 'flex';
+  }
+  
+  // Function to close auth modal
+  function closeAuthModal() {
+    document.getElementById('authOptionsModal').style.display = 'none';
+  }
+  
+  // These functions would connect to your existing auth system
+  function showSignupForm() {
+    closeAuthModal();
+    // Connect to your existing signup functionality
+    alert("Redirecting to sign up form...");
+    // In your actual code, you would call your signup function here
+  }
+  
+  function showLoginForm() {
+    closeAuthModal();
+    // Connect to your existing login functionality
+    alert("Redirecting to login form...");
+    // In your actual code, you would call your login function here
+  }
+</script>
+
+
+
+
+
+
+
+</body>
+</html>

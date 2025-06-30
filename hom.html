@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Split Background Page</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      display: flex;
+      height: 100vh;
+      width: 100%;
+    }
+
+    .left {
+      background-color: orange;
+      width: 50%;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding-left: 8%;
+      color: white;
+    }
+
+    .right {
+      background-color: purple;
+      width: 50%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding-right: 8%;
+      color: white;
+    }
+
+    .left .text, .right .text {
+      max-width: 400px;
+    }
+
+    .left .text {
+      text-align: left;
+    }
+
+    .right .text {
+      text-align: right;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.2rem;
+    }
+
+    /* Responsive Layout */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+
+      .left, .right {
+        width: 100%;
+        padding: 40px 20px;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .left .text, .right .text {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Orange Side -->
+    <div class="left">
+      <div class="text">
+        <h1>Left Side - Orange</h1>
+        <p>This section highlights our mission to innovate and lead in community impact through creativity.</p>
+      </div>
+    </div>
+
+    <!-- Purple Side -->
+    <div class="right">
+      <div class="text">
+        <h1>Right Side - Purple</h1>
+        <p>We are constantly pushing the boundaries of technology to create a better tomorrow.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+

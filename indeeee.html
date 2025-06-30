@@ -1,0 +1,48 @@
+<!-- CONTINUED SECTION WITH SPLIT BACKGROUND COLORS -->
+<div style="display: flex; height: 400px; margin-top: 60px; font-family: Arial, sans-serif;">
+
+  <!-- Orange Side -->
+  <div style="flex: 1; background-color: orange; color: #222; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 40px;">
+    <h2>Welcome to Fastpay's Orange Zone</h2>
+    <p style="max-width: 80%; text-align: left;">
+      Manage your transactions with ease. Our tools help you control your wallet and stay on top of your crypto operations.
+    </p>
+  </div>
+
+  <!-- Purple Side -->
+  <div style="flex: 1; background-color: purple; color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 40px;">
+    <h2>Fastpay's Purple Zone</h2>
+    <p style="max-width: 80%; text-align: right;">
+      Connect to global platforms and experience fast, reliable payment services right from your dashboard.
+    </p>
+  </div>
+</div>
+
+<!-- FUNCTIONAL LOGIN & SIGNUP BUTTONS WITH PROMPTS -->
+<script>
+  function openModal(modalType) {
+    if (modalType === 'loginModal') {
+      const username = prompt("Enter your username:");
+      const password = prompt("Enter your password:");
+      if (username && password) {
+        alert(`Welcome back, ${username}!\nYou have successfully logged in.`);
+      } else {
+        alert("Login cancelled or incomplete.");
+      }
+    } else if (modalType === 'signupModal') {
+      const username = prompt("Choose a username:");
+      const email = prompt("Enter your email:");
+      const phone = prompt("Enter your phone number:");
+      const password = prompt("Choose a password:");
+      if (username && email && phone && password) {
+        alert(`Account created!\nWelcome, ${username}.`);
+      } else {
+        alert("Sign up cancelled or incomplete.");
+      }
+    }
+  }
+
+  function closeModal(modalId) {
+    // No actual modal closing since we're using prompt version for simplicity
+  }
+</script>

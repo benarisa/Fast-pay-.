@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InfinityPay - Payment Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #2d1d4a;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 0;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            color: #003087;
+            margin-bottom: 20px;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 40px;
+        }
+        
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            width: calc(33.333% - 20px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: #003087;
+            margin-bottom: 20px;
+        }
+        
+        h2 {
+            font-size: 1.5rem;
+            color: #003087;
+            margin-bottom: 15px;
+        }
+        
+        .feature-description {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .learn-more {
+            display: inline-block;
+            color: #0070ba;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .learn-more:hover {
+            color: #003087;
+            text-decoration: underline;
+        }
+        
+        .divider {
+            border: none;
+            height: 1px;
+            background-color: #ddd;
+            margin: 40px 0;
+        }
+        
+        .withdrawal-options {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .withdrawal-options h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .options {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+        
+        .option {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .option-icon {
+            font-size: 1.8rem;
+            color: #003087;
+        }
+        
+        .option-text {
+            font-weight: 600;
+            color: #333;
+        }
+        
+        @media (max-width: 768px) {
+            .feature-card {
+                width: 100%;
+            }
+            
+            .options {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>InfinityPay is for everyone who pays or gets paid.</h1>
+            <p class="tagline">Join millions of users and businesses worldwide</p>
+        </header>
+        
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h2>Individuals</h2>
+                <p class="feature-description">
+                    Discover why we have more than 5 million active accounts worldwide. Send and receive money with ease.
+                </p>
+                <a href="#" class="learn-more">Learn More <i class="fas fa-chevron-right"></i></a>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <h2>Businesses</h2>
+                <p class="feature-description">
+                    Join over 2 million businesses around the world offering InfinityPay as a payment solution.
+                </p>
+                <a href="#" class="learn-more">Learn More <i class="fas fa-chevron-right"></i></a>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <h2>Partners & Developers</h2>
+                <p class="feature-description">
+                    Work with InfinityPay to offer your customers world-class payment solutions through our API.
+                </p>
+                <a href="#" class="learn-more">Learn More <i class="fas fa-chevron-right"></i></a>
+            </div>
+        </div>
+        
+        <hr class="divider">
+        
+        <div class="withdrawal-options">
+            <h2>Flexible Withdrawal Options</h2>
+            <div class="options">
+                <div class="option">
+                    <div class="option-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <span class="option-text">Withdraw money directly to Bank Account</span>
+                </div>
+                
+                <div class="option">
+                    <div class="option-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <span class="option-text">Withdraw money from InfinityPay to Mobile Wallet</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

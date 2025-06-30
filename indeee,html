@@ -1,0 +1,107 @@
+<!-- Add this right after your last card-container div -->
+<div class="dual-color-section">
+  <div class="orange-section">
+    <h3>FAST TRANSACTIONS</h3>
+    <p>Our orange zone represents speed and efficiency. With Fastpay, your transactions are processed in seconds, not hours.</p>
+  </div>
+  <div class="purple-section">
+    <h3>SECURE PAYMENTS</h3>
+    <p>Our purple zone stands for security and reliability. Your funds are protected with bank-level encryption.</p>
+  </div>
+</div>
+
+<style>
+  /* Styles for the new dual color section only */
+  .dual-color-section {
+    display: flex;
+    width: 100%;
+    min-height: 300px;
+    margin: 50px 0;
+  }
+  
+  .orange-section {
+    flex: 1;
+    background-color: #FFA500;
+    padding: 40px;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+  }
+  
+  .purple-section {
+    flex: 1;
+    background-color: #800080;
+    padding: 40px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  
+  .orange-section h3, 
+  .purple-section h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .orange-section p, 
+  .purple-section p {
+    max-width: 80%;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  
+  @media (max-width: 768px) {
+    .dual-color-section {
+      flex-direction: column;
+    }
+    
+    .orange-section, 
+    .purple-section {
+      text-align: center;
+      align-items: center;
+    }
+    
+    .orange-section p, 
+    .purple-section p {
+      max-width: 100%;
+    }
+  }
+</style>
+
+<script>
+  // Fix for login/signup buttons (add this to your existing script)
+  function openModal(modalId) {
+    if (modalId === 'loginModal') {
+      const username = prompt("Enter your username:");
+      if (username) {
+        const password = prompt("Enter your password:");
+        if (password) {
+          alert(`Welcome back, ${username}! You are now logged in.`);
+        }
+      }
+    } else if (modalId === 'signupModal') {
+      const username = prompt("Choose a username:");
+      if (username) {
+        const email = prompt("Enter your email:");
+        if (email) {
+          const phone = prompt("Enter your phone number:");
+          if (phone) {
+            const password = prompt("Choose a password:");
+            if (password) {
+              alert(`Account created successfully!\nUsername: ${username}\nEmail: ${email}\nPhone: ${phone}`);
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  // Close modal function (needed for your existing modal structure)
+  function closeModal(modalId) {
+    // This is kept in case you want to use modals later
+  }
+</script>

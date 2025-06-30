@@ -1,0 +1,45 @@
+<section class="audience-section">
+  <h2>Paxinfinitypay is for everyone who pays or gets paid.</h2>
+
+  <div class="audience-cards">
+    <!-- Individuals -->
+    <div class="audience-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/2922/2922656.png" alt="Individuals" />
+      <h3>Individuals</h3>
+      <p>Find out why we have more than 5M active accounts worldwide.</p>
+      <button onclick="promptUser('Individuals')">Learn More</button>
+    </div>
+
+    <!-- Businesses -->
+    <div class="audience-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/1046/1046878.png" alt="Businesses" />
+      <h3>Businesses</h3>
+      <p>Join more than 2 million businesses around the world offering Paxinfinitypay.</p>
+      <button onclick="promptUser('Businesses')">Learn More</button>
+    </div>
+
+    <!-- Partners and Developers -->
+    <div class="audience-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/3103/3103446.png" alt="Partners" />
+      <h3>Partners and developers</h3>
+      <p>Work with Paxinfinitypay to offer your customers world class payment solutions.</p>
+      <button onclick="promptUser('Partners')">Learn More</button>
+    </div>
+  </div>
+</section>
+
+<script>
+  function promptUser(role) {
+    const info = prompt(`Enter your email to get more info about ${role}:`);
+    if (info) {
+      fetch('http://localhost:3000/api/learn-more', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ role, info })
+      })
+      .then(res => res.json())
+      .then(data => alert(data.message))
+      .catch(() => alert('Something went wrong.'));
+    }
+  }
+</script>

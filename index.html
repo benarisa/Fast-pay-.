@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Crypto Linking - Paxinfinitypay</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <h2 class="header">Paxinfinitypay is for everyone who uses different cryptocurrency platforms.</h2>
+  <div class="card-container">
+    <!-- Card Template -->
+    <div class="card">
+      <img src="https://via.placeholder.com/200x100?text=PAXFUL" alt="Paxful" />
+      <p><strong>Paxful</strong></p>
+      <p>Find out why we have more than 1M active accounts linked with Paxinfinitypay.</p>
+      <button class="link-btn" onclick="openPrompt('paxful')">Link Account</button>
+    </div>
+
+    <div class="card">
+      <img src="https://via.placeholder.com/200x100?text=Noones" alt="Noones" />
+      <p><strong>Noones</strong></p>
+      <p>Find out why we have more than 1M active accounts linked with Paxinfinitypay.</p>
+      <button class="link-btn green" onclick="openPrompt('noones')">Link Account</button>
+    </div>
+
+    <div class="card">
+      <img src="https://via.placeholder.com/200x100?text=BYBIT" alt="Bybit" />
+      <p><strong>Bybit</strong></p>
+      <p>Find out why we have more than 100K accounts linked with Paxinfinitypay.</p>
+      <button class="link-btn black" onclick="openPrompt('bybit')">Link Account</button>
+    </div>
+
+    <div class="card">
+      <img src="https://via.placeholder.com/200x100?text=LocalCoinSwap" alt="LocalCoinSwap" />
+      <p><strong>LocalCoinSwap</strong></p>
+      <p>Find out why we have more than 1M active accounts linked with Paxinfinitypay.</p>
+      <button class="link-btn blue" onclick="openPrompt('localcoinswap')">Link Account</button>
+    </div>
+
+    <div class="card">
+      <img src="https://via.placeholder.com/200x100?text=Deriv" alt="Deriv" />
+      <p><strong>Deriv</strong></p>
+      <p>Find out why we have more than 1M active accounts linked with Paxinfinitypay.</p>
+      <button class="link-btn red" onclick="openPrompt('deriv')">Link Account</button>
+    </div>
+
+    <div class="card">
+      <img src="https://via.placeholder.com/200x100?text=Coinbase" alt="Coinbase" />
+      <p><strong>Coinbase</strong></p>
+      <p>Find out why we have more than 1M active accounts linked with Paxinfinitypay.</p>
+      <button class="link-btn blue" onclick="openPrompt('coinbase')">Link Account</button>
+    </div>
+  </div>
+
+  <script>
+    function openPrompt(platform) {
+      const username = prompt(`Enter your ${platform.toUpperCase()} username/email to link account:`);
+      if (username) {
+        fetch("http://localhost:3000/api/link-account", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ platform, username })
+        })
+        .then(res => res.json())
+        .then(data => alert(data.message))
+        .catch(err => alert("Error linking account."));
+      }
+    }
+  </script>
+</body>
+</html>

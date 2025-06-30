@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FASTPAY</title>
+    <link rel="stylesheet" href="styless.css" />
+    <style>
+        /* Add your existing and additional CSS here */
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #656b70;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        /* Other existing styles omitted for brevity */
+
+        .signup-form, .login-form {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: white;
+            color: black;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .signup-form h2, .login-form h2 {
+            margin-bottom: 20px;
+        }
+
+        .signup-form input, .login-form input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .signup-form button, .login-form button {
+            width: 100%;
+            padding: 12px;
+            background-color: #0070ba;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .signup-form button:hover, .login-form button:hover {
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="logo">
+            <img src="local.jpg" alt="Logo" />
+        </div>
+        <nav class="nav">
+            <div class="dropdown">
+                <button class="dropbtn">PERSONAL</button>
+                <div class="dropdown-content">
+                    <a href="#">Wallet</a>
+                    <a href="#">Send Money</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">BUSINESS</button>
+                <div class="dropdown-content">
+                    <a href="#">API Access</a>
+                    <a href="#">Invoices</a>
+                </div>
+            </div>
+        </nav>
+        <div class="auth-buttons">
+            <button onclick="window.location.href='login.html'">Log In</button>
+            <button class="signup" onclick="window.location.href='signup.html'">Sign Up</button>
+        </div>
+    </header>
+
+    <!-- REST OF YOUR CONTENT HERE -->
+    <!-- Track Payment, Accept Payment, Cancel Transfer sections remain unchanged -->
+
+    <!-- Crypto Account Linking section remains unchanged -->
+
+    <!-- Dual-color section remains unchanged -->
+
+    <!-- Additional Scripts -->
+    <script>
+        function trackPayment() {
+            const paymentId = prompt("🔎 Enter your Payment Tracking ID:");
+            if (paymentId) {
+                alert(`✅ Tracking ID: ${paymentId}\n\nStatus: Your payment is in process.`);
+            } else {
+                alert("❗ You must enter a valid Tracking ID.");
+            }
+        }
+
+        function acceptPayment() {
+            alert("⚠️ You are about to accept the payment.\n\nEnsure the details are correct before proceeding.");
+        }
+
+        function cancelTransfer() {
+            alert("⚠️ You are about to cancel this transfer.\n\nThe sender will be refunded immediately.\nThis action is irreversible.");
+        }
+
+        function openPrompt(platform) {
+            const username = prompt(`Enter your ${platform.toUpperCase()} username/email to link account:`);
+            if (username) {
+                fetch("http://localhost:3000/api/link-account", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ platform, username })
+                })
+                .then(res => res.json())
+                .then(data => alert(data.message))
+                .catch(err => alert("Error linking account."));
+            }
+        }
+    </script>
+</body>
+</html>
